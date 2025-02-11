@@ -558,12 +558,13 @@ elif selection=="AI Agent":
     # 3. Setup AI Agent with Search tool functionality
 
     system_prompt="Act as an chatbot who is smart and friendly."
-
+    from langchain_google_genai import ChatGoogleGenerativeAI as genai
     def get_response_from_ai_agent(my_model,query,allow_search,system_prompt,provider):
         if provider=="Groq":
             llm=ChatGroq(model_name=my_model)
-        # elif provider =="OpenAI":
-        #     llm=ChatOpenAI(model=my_model)
+        elif provider =="Google":
+            llm=genai(model=my_model)
+        
         
         
         search_tools=[TavilySearchResults(max_results=2)] if allow_search else []
@@ -637,15 +638,15 @@ elif selection=="AI Agent":
         
         system_prompt=st.text_area("Define Role for YOur AI AGent",height=70,placeholder="Write here your Agent role")
 
-        model_platform=st.radio("Select Platform:",("Groq")
+        model_platform=st.radio("Select Platform:",("Groq","Google"))
 
         GROQ_MODEL_NAMES=["llama-3.3-70b-versatile","mixtral-8x7b-32768"]
-        # OPENAI_MODEL_NAMES=["gpt-4o-mini"]
+        GOOGLE_MODEL_NAMES=["emini-1.5-pro"]
 
         if model_platform=="Groq":
             selected_model=st.selectbox("Select Groq Model:",GROQ_MODEL_NAMES)
-        # elif model_platform=="OpenAI":
-        #     selected_model=st.selectbox("Select Open AI Model:",OPENAI_MODEL_NAMES)
+        elif model_platform=="Google":
+            selected_model=st.selectbox("Select Google AI Model:",GOOGLE_MODEL_NAMES)
 
         allow_web_search=st.checkbox("Allow Web Search")
 
