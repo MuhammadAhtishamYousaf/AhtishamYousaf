@@ -344,31 +344,31 @@ import pygame
 # Purpose: Initializes the pygame audio system.
 # Why: Without this, pygame can’t play audio.
 # Note: This should be called before using any pygame audio functions.
-pygame.mixer.init()
+# pygame.mixer.init()
 
 # Function to Convert Text to Speech and Save Temporarily
-def generate_audio(text):
-    try:
-        tts = gTTS(text)
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as fp:
-            temp_path = fp.name
-            tts.save(temp_path)
-        return temp_path  # Return the path of the audio file
-    except Exception as e:
-        print(f"Error in TTS: {e}")
-        return None
+# def generate_audio(text):
+#     try:
+#         tts = gTTS(text)
+#         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as fp:
+#             temp_path = fp.name
+#             tts.save(temp_path)
+#         return temp_path  # Return the path of the audio file
+#     except Exception as e:
+#         print(f"Error in TTS: {e}")
+#         return None
 
-# Function to Play Audio
-def play_audio(audio_path):
-    try:
-        pygame.mixer.music.load(audio_path)
-        pygame.mixer.music.play()
-    except Exception as e:
-        print(f"Error playing audio: {e}")
+# # Function to Play Audio
+# def play_audio(audio_path):
+#     try:
+#         pygame.mixer.music.load(audio_path)
+#         pygame.mixer.music.play()
+#     except Exception as e:
+#         print(f"Error playing audio: {e}")
 
-# Function to Stop Audio
-def stop_audio():
-    pygame.mixer.music.stop()
+# # Function to Stop Audio
+# def stop_audio():
+#     pygame.mixer.music.stop()
             
 # STAGE 2: Convert image to required format
 def encode_image(uploaded_image):
@@ -477,28 +477,28 @@ def vision():
                 st.markdown(message["content"])
                 # speak_text(message['content'])
 
-                # Speak/Stop Button
-                is_playing = st.session_state.get(f"is_playing_{message['content']}", False)
-                if st.button("🎵 Read Load" if not is_playing else "⏹️ Stop", key=f"play_{message['content']}"):
-                    if not is_playing:
-                        play_audio(st.session_state.audio_paths[message['content']])
-                        st.session_state[f"is_playing_{message['content']}"] = True
-                    else:
-                        stop_audio()
-                        st.session_state[f"is_playing_{message['content']}"] = False
+                # # Speak/Stop Button
+                # is_playing = st.session_state.get(f"is_playing_{message['content']}", False)
+                # if st.button("🎵 Read Load" if not is_playing else "⏹️ Stop", key=f"play_{message['content']}"):
+                #     if not is_playing:
+                #         play_audio(st.session_state.audio_paths[message['content']])
+                #         st.session_state[f"is_playing_{message['content']}"] = True
+                #     else:
+                #         stop_audio()
+                #         st.session_state[f"is_playing_{message['content']}"] = False
 
                 # 🎵 Audio Download Button
-                audio_path = st.session_state.audio_paths.get(message["content"])
-                if audio_path:
-                    with open(audio_path, "rb") as audio_file:
-                        audio_data = audio_file.read()
-                        st.download_button(
-                            label="⬇️ Download Audio",
-                            data=audio_data,
-                            file_name="response_audio.mp3",
-                            mime="audio/mpeg",
-                            key=f"download_{message['content']}"
-                        )
+                # audio_path = st.session_state.audio_paths.get(message["content"])
+                # if audio_path:
+                #     with open(audio_path, "rb") as audio_file:
+                #         audio_data = audio_file.read()
+                #         st.download_button(
+                #             label="⬇️ Download Audio",
+                #             data=audio_data,
+                #             file_name="response_audio.mp3",
+                #             mime="audio/mpeg",
+                #             key=f"download_{message['content']}"
+                #         )
                         
 
 
