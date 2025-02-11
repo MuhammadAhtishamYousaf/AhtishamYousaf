@@ -304,14 +304,14 @@ def irfan_malik():
                 # speak_text_using_gtts(message['content'][-1])
                     
 
-    if st.session_state.chat_history_irfan:
-        last_message=st.session_state.chat_history_irfan[-3]
-        if last_message['role']=='assistant':
-            #speak
-            # st.write(last_message["content"])
-            # pass 
-            # speak_text_using_elevanlab(last_message['content'])
-            speak_text_using_gtts(last_message["content"])
+    # if st.session_state.chat_history_irfan:
+    #     last_message=st.session_state.chat_history_irfan[-3]
+    #     if last_message['role']=='assistant':
+    #         #speak
+    #         # st.write(last_message["content"])
+    #         # pass 
+    #         # speak_text_using_elevanlab(last_message['content'])
+    #         speak_text_using_gtts(last_message["content"])
     #     else:
     #         st.error("last messsasge is not ai")
     # else:
