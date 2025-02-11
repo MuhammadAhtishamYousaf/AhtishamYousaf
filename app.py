@@ -460,10 +460,10 @@ def vision():
                 "content": response
             })
 
-             # Generate and save audio for the response
-            audio_path = generate_audio(response)
-            if audio_path:
-                st.session_state.audio_paths[response] = audio_path
+            #  # Generate and save audio for the response
+            # audio_path = generate_audio(response)
+            # if audio_path:
+            #     st.session_state.audio_paths[response] = audio_path
     # Render Chat History (Simplified)
     for message in st.session_state.chat_history_vision:
         if message['role']=="user":
