@@ -567,7 +567,7 @@ elif selection=="AI Agent":
     # response = tavily_client.search("Who is Leo Messi?")
     # print(response)
 
-    groq_llm=ChatGroq(model_name="llama-3.3-70b-versatile")
+    groq_llm=ChatGroq(model_name="llama-3.3-70b-versatile",api_key=GROQ_API_KEY)
     # openai_llm=ChatOpenAI(model="gpt-4o-mini")
 
 
