@@ -552,7 +552,7 @@ elif selection=="AI Agent":
     # print(response)
 
     groq_llm=ChatGroq(model_name="llama-3.3-70b-versatile")
-    openai_llm=ChatOpenAI(model="gpt-4o-mini")
+    # openai_llm=ChatOpenAI(model="gpt-4o-mini")
 
 
     # 3. Setup AI Agent with Search tool functionality
@@ -562,8 +562,8 @@ elif selection=="AI Agent":
     def get_response_from_ai_agent(my_model,query,allow_search,system_prompt,provider):
         if provider=="Groq":
             llm=ChatGroq(model_name=my_model)
-        elif provider =="OpenAI":
-            llm=ChatOpenAI(model=my_model)
+        # elif provider =="OpenAI":
+        #     llm=ChatOpenAI(model=my_model)
         
         
         search_tools=[TavilySearchResults(max_results=2)] if allow_search else []
@@ -637,15 +637,15 @@ elif selection=="AI Agent":
         
         system_prompt=st.text_area("Define Role for YOur AI AGent",height=70,placeholder="Write here your Agent role")
 
-        model_platform=st.radio("Select Platform:",("Groq","OpenAI"))
+        model_platform=st.radio("Select Platform:",("Groq")
 
         GROQ_MODEL_NAMES=["llama-3.3-70b-versatile","mixtral-8x7b-32768"]
-        OPENAI_MODEL_NAMES=["gpt-4o-mini"]
+        # OPENAI_MODEL_NAMES=["gpt-4o-mini"]
 
         if model_platform=="Groq":
             selected_model=st.selectbox("Select Groq Model:",GROQ_MODEL_NAMES)
-        elif model_platform=="OpenAI":
-            selected_model=st.selectbox("Select Open AI Model:",OPENAI_MODEL_NAMES)
+        # elif model_platform=="OpenAI":
+        #     selected_model=st.selectbox("Select Open AI Model:",OPENAI_MODEL_NAMES)
 
         allow_web_search=st.checkbox("Allow Web Search")
 
