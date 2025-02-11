@@ -1,0 +1,35 @@
+# Core Dependencies
+streamlit
+python-dotenv
+requests
+google-api-python-client
+fastapi
+pydantic
+
+# LangChain & Groq
+langchain
+langchain_groq
+langchain_core
+langchain_community
+langchain_huggingface
+langgraph
+groq
+
+# Text Processing & Vector Stores
+qdrant-client
+unstructured
+sentence-transformers
+
+# AI Models & Search Tools
+tavily-python
+
+# File Handling & Parsing
+PyMuPDF  # PDF support
+pypdf
+python-docx  # Word Document support
+
+# Text-to-Speech (TTS)
+gTTS
+playsound==1.2.2
+pygame
+elevenlabs
