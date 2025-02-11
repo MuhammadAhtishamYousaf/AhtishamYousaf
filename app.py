@@ -39,13 +39,27 @@ from langchain_core.prompts import ChatPromptTemplate
 # Initialize the HuggingFace embeddings model
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 # GROQ_API_KEY = st.secrets['GROQ_API_KEY']
+# GROQ_API_KEY = "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"
+# QDRANT_URL = st.secrets['QDRANT_URL']
+# QDRANT_KEY =st.secrets['QDRANT_KEY'] 
+# YOUTUB_API_KEY = st.secrets['YOUTUB_API_KEY']
+# ELEVENLAB_API_KEY = st.secrets['ELEVENLAB_API_KEY']
+# TAVILY_API_KEY =st.secrets['TAVILY_API_KEY'] 
+# GOOGLE_API_KEY =st.secrets['GOOGLE_API_KEY'] 
 GROQ_API_KEY = "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"
-QDRANT_URL = st.secrets['QDRANT_URL']
-QDRANT_KEY =st.secrets['QDRANT_KEY'] 
-YOUTUB_API_KEY = st.secrets['YOUTUB_API_KEY']
-ELEVENLAB_API_KEY = st.secrets['ELEVENLAB_API_KEY']
-TAVILY_API_KEY =st.secrets['TAVILY_API_KEY'] 
-GOOGLE_API_KEY =st.secrets['GOOGLE_API_KEY'] 
+QDRANT_URL = "https://f757e150-6e65-48cd-a45a-ba46fa947234.eu-west-2-0.aws.cloud.qdrant.io:6333"
+QDRANT_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwiZXhwIjoxNzQ2OTQwODUzfQ.Rp_WmX3FMJA3gJPgIi0g8Vp8Vn0MMPmoGGfeKaU8m0w"
+
+# LANGSMITH_TRACING=True
+LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
+LANGSMITH_API_KEY="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"
+LANGSMITH_PROJECT="pr-new-mesenchyme-9"
+# OPENAI_API_KEY="<your-openai-api-key>"
+ELEVENLAB_API_KEY="sk_eaf6096f9230681058c5890f1de2d1b1577f2c8e94852a93"
+TAVILY_API_KEY="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"
+OPENAI_API_KEY="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"
+YOUTUB_API_KEY="AIzaSyChHqpzh0m34PHsRYfRp4dGC92YPFFgbks"  # Replace with your actual API key"
+GOOGLE_API_KEY="AIzaSyBjnj_9B9CLmaJGueSVWJHGwz7QEC6TW9M"
 # Initialize the LLM
 chat_llm = ChatGroq(model_name="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 # Set your Groq API key from environment variable
