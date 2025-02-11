@@ -44,6 +44,7 @@ QDRANT_KEY =st.secrets['QDRANT_KEY']
 YOUTUB_API_KEY = st.secrets['YOUTUB_API_KEY']
 ELEVENLAB_API_KEY = st.secrets['ELEVENLAB_API_KEY']
 TAVILY_API_KEY =st.secrets['TAVILY_API_KEY'] 
+GOOGLE_API_KEY =st.secrets['GOOGLE_API_KEY'] 
 # Initialize the LLM
 chat_llm = ChatGroq(model_name="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 # Set your Groq API key from environment variable
@@ -563,7 +564,7 @@ elif selection=="AI Agent":
         if provider=="Groq":
             llm=ChatGroq(model_name=my_model)
         elif provider =="Google":
-            llm=genai(model=my_model)
+            llm=genai(model=my_model,api_key=GOOGLE_API_KEY)
         
         
         
@@ -601,7 +602,7 @@ elif selection=="AI Agent":
 
     # 2. Setup AI Agent from FrontEnd Request
 
-    ALLOWED_MODEL_NAMES=["llama3-70b-8192", "mixtral-8x7b-32768", "llama-3.3-70b-versatile", "gpt-4o-mini"]
+    ALLOWED_MODEL_NAMES=["llama3-70b-8192", "mixtral-8x7b-32768", "llama-3.3-70b-versatile", "gemini-1.5-pro"]
     app=FastAPI(title="LangGraph AI AGent")
 
     @app.post("/chat")
