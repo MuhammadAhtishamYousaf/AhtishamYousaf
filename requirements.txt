@@ -6,7 +6,7 @@ google-api-python-client
 fastapi
 pydantic
 langchain_google_genai
-unicorn
+uvicorn
 
 # LangChain & Groq
 langchain
