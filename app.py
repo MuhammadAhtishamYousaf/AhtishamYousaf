@@ -38,7 +38,8 @@ from langchain_core.prompts import ChatPromptTemplate
 
 # Initialize the HuggingFace embeddings model
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
-GROQ_API_KEY = st.secrets['GROQ_API_KEY']
+# GROQ_API_KEY = st.secrets['GROQ_API_KEY']
+GROQ_API_KEY = "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"
 QDRANT_URL = st.secrets['QDRANT_URL']
 QDRANT_KEY =st.secrets['QDRANT_KEY'] 
 YOUTUB_API_KEY = st.secrets['YOUTUB_API_KEY']
