@@ -27,7 +27,7 @@ import random
 import string
 from dotenv import load_dotenv
 from datetime import datetime
-from streamlit_chat import message
+# from streamlit_chat import message
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 from langchain_community.vectorstores import Qdrant
