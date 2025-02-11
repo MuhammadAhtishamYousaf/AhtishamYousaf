@@ -5,6 +5,7 @@ requests
 google-api-python-client
 fastapi
 pydantic
+langchain_google_genai
 
 # LangChain & Groq
 langchain
