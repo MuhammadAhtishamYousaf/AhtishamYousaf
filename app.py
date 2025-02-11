@@ -643,7 +643,7 @@ elif selection=="AI Agent":
         model_platform=st.radio("Select Platform:",("Groq","Google"))
 
         GROQ_MODEL_NAMES=["llama-3.3-70b-versatile","mixtral-8x7b-32768"]
-        GOOGLE_MODEL_NAMES=["emini-1.5-pro"]
+        GOOGLE_MODEL_NAMES=["gemini-1.5-pro"]
 
         if model_platform=="Groq":
             selected_model=st.selectbox("Select Groq Model:",GROQ_MODEL_NAMES)
