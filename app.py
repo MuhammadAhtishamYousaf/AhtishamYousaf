@@ -577,7 +577,7 @@ elif selection=="AI Agent":
     from langchain_google_genai import ChatGoogleGenerativeAI as genai
     def get_response_from_ai_agent(my_model,query,allow_search,system_prompt,provider):
         if provider=="Groq":
-            llm=ChatGroq(model_name=my_model)
+            llm=ChatGroq(model_name=my_model,api_key=GROQ_API_KEY)
         elif provider =="Google":
             llm=genai(model=my_model,api_key=GOOGLE_API_KEY)
         
