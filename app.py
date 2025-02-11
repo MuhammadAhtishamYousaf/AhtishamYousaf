@@ -26,25 +26,28 @@ import docx
 import random
 import string
 from dotenv import load_dotenv
-# from datetime import datetime
-# from streamlit_chat import message
+from datetime import datetime
+from streamlit_chat import message
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 from langchain_community.vectorstores import Qdrant
 from langchain_huggingface import HuggingFaceEmbeddings
-# from langchain.chains import create_retrieval_chain
+from langchain.chains import create_retrieval_chain
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 
 # Initialize the HuggingFace embeddings model
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
-GROQ_API_KEY = "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"
-qdrant_url = "https://f757e150-6e65-48cd-a45a-ba46fa947234.eu-west-2-0.aws.cloud.qdrant.io:6333"
-qdrant_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwiZXhwIjoxNzQ2OTQwODUzfQ.Rp_WmX3FMJA3gJPgIi0g8Vp8Vn0MMPmoGGfeKaU8m0w"
+GROQ_API_KEY = st.secrets['GROQ_API_KEY']
+QDRANT_URL = st.secrets['QDRANT_URL']
+QDRANT_KEY =st.secrets['QDRANT_KEY'] 
+YOUTUB_API_KEY = st.secrets['YOUTUB_API_KEY']
+ELEVENLAB_API_KEY = st.secrets['ELEVENLAB_API_KEY']
+TAVILY_API_KEY =st.secrets['TAVILY_API_KEY'] 
 # Initialize the LLM
 chat_llm = ChatGroq(model_name="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 # Set your Groq API key from environment variable
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
 if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY not set in environment variables")
 # Initialize chat history in session state
@@ -106,8 +109,8 @@ def create_vector_store(text_chunks):
     vectorstore = Qdrant.from_documents(
         documents=text_chunks,
         embedding=embedding_model,
-        url=qdrant_url,
-        api_key=qdrant_key
+        url=QDRANT_URL,
+        api_key=QDRANT_KEY
     )
     return vectorstore
 
@@ -170,7 +173,7 @@ def RAG():
 
 
 def search_youtube(query, max_results=2):
-    YOUTUB_API_KEY="AIzaSyChHqpzh0m34PHsRYfRp4dGC92YPFFgbks"  
+  
     youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=YOUTUB_API_KEY)
 
     try:
@@ -210,7 +213,7 @@ def speak_text_using_gtts(response):
     
 def speak_text_using_elevanlab(response):
         # Initialize the ElevenLabs client using the API key from environment variables.
-    client = ElevenLabs(api_key=os.environ.get("ELEVENLAB_API_KEY"))
+    client = ElevenLabs(api_key=ELEVENLAB_API_KEY)
     
     # Generate audio from the provided response text using the specified parameters.
     audio = client.generate(
@@ -233,12 +236,15 @@ def speak_text_using_elevanlab(response):
 def irfan_malik():
     system_prompt="""
             Your name is Irfan Malik. You are an accomplished Artificial Intelligence and Data Science expert with millions in sales, a top freelancer, and the founder and CEO of Xeven Solutions. Your company, Xeven Solutions, is a renowned AI and software development firm that serves over 500 clients worldwide and employs more than 200 professionals. 
+
             At Xeven Solutions, we specialize in delivering cutting-edge technology solutions, including:
             1. AI Development Services – Encompassing Machine Learning, Deep Learning, Fine-tuning, RAG, Natural Language Processing, Computer Vision, and Predictive Modeling.
             2. Mobile App Development – Crafting innovative, user-friendly mobile applications.
             3. Custom Web Development – Developing bespoke web solutions tailored to clients' unique business needs.
             4. Data Analytics – Providing actionable insights through advanced data processing and visualization.
+
             Our company is recognized as a trusted AI development partner, building meaningful AI healthcare solutions, intelligent chatbots, and offering services such as ChatGPT integration, custom software development, digital marketing, DevOps, UI/UX design, and much more.
+
             As Irfan Malik, you are here to educate and guide people by answering their queries with wisdom and clarity. Always respond in a polite, professional manner that reflects the mindset of a millionaire CEO who values excellence, innovation, and customer success.
             Make the response concise and clear.
             
@@ -533,10 +539,10 @@ elif selection=="AI Agent":
     import os 
 
     # Phase1–Create AI Agent
-    # 1. Setup API Keys for Groq and Tavily
-    GROQ_API_KEY=os.environ.get("GROQ_API_KEY")
-    TAVILY_API_KEY=os.environ.get("TAVILY_API_KEY")
-    OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY")
+    # # 1. Setup API Keys for Groq and Tavily
+    # GROQ_API_KEY=os.environ.get("GROQ_API_KEY")
+    # TAVILY_API_KEY=os.environ.get("TAVILY_API_KEY")
+    # OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY")
 
     # 2. Setup LLM & Tools
 
@@ -681,3 +687,6 @@ elif selection=="AI Agent":
         uvicorn.run(app,host="127.0.0.1",port=9999)
 
    
+
+    
+    
